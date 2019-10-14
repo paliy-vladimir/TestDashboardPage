@@ -9,7 +9,7 @@ const Invoices = ({ data }) =>
   <InvoicesContainer>
     <TitleSection title="Invoices"/>
     <div className="invoices">
-      {data.map(item => <Invoice key={item.action} data={item}/>)}
+      {data.map(item => <Invoice key={item.action} {...item} />)}
     </div>
   </InvoicesContainer>;
 

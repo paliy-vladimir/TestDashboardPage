@@ -2,15 +2,15 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const Invoice = ({ data }) => (
-  <InvoiceContainer className="invoice" action={data.action}>
+const Invoice = ({ action, total, actionQuantity }) => (
+  <InvoiceContainer className="invoice" action={action}>
     <div className="invoice-head">
       <div className="type">RM</div>
-      <div className="total">{data.total}</div>
+      <div className="total">{total}</div>
     </div>
     <div className="invoice-body">
-      <div className="actionQuantity">{data.actionQuantity}</div>
-      <div className="action">{data.action}</div>
+      <div className="actionQuantity">{actionQuantity}</div>
+      <div className="action">{action}</div>
     </div>
   </InvoiceContainer>
 );
@@ -22,6 +22,8 @@ const colors = {
 };
 
 const InvoiceContainer = styled.div`
+  font-family: 'Quicksand', Helvetica, Arial, serif;
+ 
   .invoice-head {
     display: flex;
     flex-direction: row;
@@ -29,6 +31,7 @@ const InvoiceContainer = styled.div`
     align-items: end;
     margin-bottom: 20px;
   }
+  
   .invoice-body {
     display: flex;
     flex-direction: column;
@@ -36,8 +39,8 @@ const InvoiceContainer = styled.div`
     align-items: center;
     margin-left: 15px;
   }
+  
   .type {
-    font-family: 'Quicksand', Helvetica, Arial, serif;
     font-weight: 700;
     font-style: normal;
     font-size: 12px;
@@ -45,8 +48,8 @@ const InvoiceContainer = styled.div`
     text-align: left;
     line-height: 20px;
   }
+  
   .total {
-    font-family: 'Quicksand', Helvetica, Arial, serif;
     font-weight: 300;
     font-style: normal;
     font-size: 38px;
@@ -55,9 +58,9 @@ const InvoiceContainer = styled.div`
     text-align: left;
     line-height: 38px;
   }
+  
   .action {
     text-transform: uppercase;
-    font-family: 'Quicksand', Helvetica, Arial, serif;
     font-weight: 700;
     font-style: normal;
     font-size: 10px;
@@ -66,9 +69,9 @@ const InvoiceContainer = styled.div`
     text-align: center;
     line-height: 13px;
   }
+  
   .actionQuantity {
     transform: rotate(0deg);
-    font-family: 'Quicksand', Helvetica, Arial, serif;
     font-weight: 400;
     font-style: normal;
     font-size: 20px;
@@ -83,6 +86,12 @@ Invoice.propTypes = {
   total: PropTypes.string,
   action: PropTypes.string,
   actionQuantity: PropTypes.number
+};
+
+Invoice.defaultProps = {
+  total: '',
+  action: '',
+  actionQuantity: '',
 };
 
 export default memo(Invoice);

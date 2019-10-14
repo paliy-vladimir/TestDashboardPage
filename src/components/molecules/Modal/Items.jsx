@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { memo } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
+
 import Select from '../Select';
 
-const Items = ({}) => (
+const Items = ({header}) => (
   <StyledItems>
-    <p>Items</p>
-    <Select />
+    <p>{ header }</p>
+    <Select  />
   </StyledItems>
 );
 const StyledItems = styled.div`
@@ -23,4 +25,12 @@ const StyledItems = styled.div`
   }
 `;
 
-export default Items;
+Items.propTypes = {
+  header: PropTypes.string,
+};
+
+Items.defaultProps = {
+  header: 'Items'
+};
+
+export default memo(Items);

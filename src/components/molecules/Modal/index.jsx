@@ -1,10 +1,9 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-
 import ReactModal from 'react-modal';
+
 import Header from "./Header";
 import Content from "./Content";
-import SendModal from "./SendModal";
 
 const reactModalStyles = {
   overlay: {
@@ -13,8 +12,8 @@ const reactModalStyles = {
   content: {
     color: 'lightsteelblue',
     width: '500px',
-    height: '50%',
-    margin: '20% auto',
+    height: '53%',
+    margin: '10% auto',
     padding: '0',
     display: 'flex',
     flexDirection: 'column'

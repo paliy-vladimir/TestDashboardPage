@@ -1,36 +1,33 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 
-class CustomDatePicker extends React.PureComponent {
+import DatePicker from 'react-datepicker';
+
+class CustomDatePicker extends PureComponent {
   state = {
     startDate: new Date()
   };
 
-  handleChange = date => {
-    this.setState({
-      startDate: date
-    });
-  };
+  handleChange = startDate => this.setState({ startDate });
 
   render() {
+    const { showTitle, label, dateFormat } = this.props;
+    const { startDate } = this.state;
     return (
       <StyledContainer>
-        {this.props.showTitle && <label>Invoice date</label>}
+        {showTitle && <label>{ label }</label>}
         <DatePicker
-          selected={this.state.startDate}
+          selected={startDate}
           onChange={this.handleChange}
-          dateFormat="dd MMMM yyyy"
+          dateFormat={dateFormat}
         />
       </StyledContainer>
     );
   }
 }
 
-// </StyledInput>
 const StyledContainer = styled.div`
-  /* height: 30px; */
   display: flex;
   flex-grow: 1;
   flex-direction: column;
@@ -40,7 +37,7 @@ const StyledContainer = styled.div`
   border-right: 1px solid rgb(229, 229, 229);
   border-top: 1px solid rgb(229, 229, 229);
   border-bottom: 1px solid rgb(229, 229, 229);
-  /* color: rgba(143, 143, 143, 1); */
+  
   label {
     font-family: 'Quicksand', Helvetica, Arial, serif;
     font-weight: 700;
@@ -51,9 +48,10 @@ const StyledContainer = styled.div`
     line-height: 10px;
     margin: 0;
   }
+  
   .react-datepicker-wrapper {
     padding-left: 5px;
-    width: 100%;
+    width: 95%;
     .react-datepicker__input-container {
       width: auto;
     }
@@ -73,8 +71,16 @@ const StyledContainer = styled.div`
   }
 `;
 
-// DatePicker.propTypes = {};
+CustomDatePicker.propTypes = {
+  showTitle: PropTypes.bool,
+  label: PropTypes.string,
+  dateFormat: PropTypes.string,
+};
 
-// DatePicker.defaultProps = {};
+CustomDatePicker.defaultProps = {
+  label: 'Invoice date',
+  showTitle: false,
+  dateFormat: 'dd MMMM yyyy'
+};
 
 export default CustomDatePicker;

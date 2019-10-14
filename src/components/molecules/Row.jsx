@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from "styled-components";
-import PropTypes from "prop-types";
 
 const Row = ({children}) =>
   <StyledRow >
     {children}
-
   </StyledRow>
 ;
 
@@ -14,10 +12,4 @@ const StyledRow = styled.div`
   flex-direction: row;
 `;
 
-Row.propTypes = {
-};
-
-Row.defaultProps = {
-};
-
-export default Row;
+export default memo(Row);

@@ -6,7 +6,7 @@ import coin from '../../../resourses/img/create-invoice-coin@27.77777862548828x.
 
 const Header = ({ main, desc, img, className }) =>
   <StyledHeader className={className}>
-    <img src={img}/>
+    <img src={img} alt='Page'/>
     <div>
       <p className="text">
         {main}
@@ -40,7 +40,7 @@ const StyledHeader = styled.div`
     text-align: left;
     line-height: 23px;
   }
-`
+`;
 
 Header.propTypes = {
   main: PropTypes.string,

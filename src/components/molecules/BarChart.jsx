@@ -1,4 +1,5 @@
-import React, { memo } from 'react';
+import React, { memo, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import {
   BarChart as Chart,
   Bar,
@@ -6,9 +7,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend
 } from 'recharts';
-import PropTypes from 'prop-types';
 
 const fill = [
   'rgba(76, 175, 120, 1.0)',
@@ -16,28 +15,32 @@ const fill = [
   'rgba(240, 58, 58, 1.0)'
 ];
 
-const BarChart = ({ data, ticks }) => (
-  <Chart
+const margin = {
+  top: 5,
+  right: 30,
+  left: 20,
+  bottom: 5
+};
+
+const BarChart = ({ data, ticks }) => {
+  const items = useMemo(() => {
+    if (!data.length) return [];
+    return Object.keys(data[0]).slice(1);
+  }, [data]);
+
+  return <Chart
     width={500}
     height={300}
     data={data}
-    margin={{
-      top: 5,
-      right: 30,
-      left: 20,
-      bottom: 5
-    }}
+    margin={margin}
   >
-    <CartesianGrid strokeDasharray="3 3" />
-    <XAxis dataKey="name" />
-    <YAxis ticks={ticks} />
-    <Tooltip />
-    {data.length &&
-      Object.keys(data[0])
-        .slice(1)
-        .map((el, i) => <Bar key={el} dataKey={el} fill={fill[i]} />)}
+    <CartesianGrid strokeDasharray="3 3"/>
+    <XAxis dataKey="name"/>
+    <YAxis ticks={ticks}/>
+    <Tooltip/>
+    {items.map((el, i) => <Bar key={el} dataKey={el} fill={fill[i]}/>)}
   </Chart>
-);
+};
 
 BarChart.propTypes = {
   ticks: PropTypes.array,

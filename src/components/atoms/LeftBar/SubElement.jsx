@@ -5,16 +5,12 @@ import styled from 'styled-components';
 const SubElement = ({ text, value, isSelected, onChange, id }) => {
   const changeCurrentElement = () => onChange(id);
 
-  return   <StyledElement isSelected={isSelected} onClick={changeCurrentElement}>
-    <p className='text'>
-      {text}
-    </p>
-    <p className='text'>
-      {value}
-    </p>
+  return <StyledElement isSelected={isSelected} onClick={changeCurrentElement}>
+    <p className='text'> {text} </p>
+    <p className='text'> {value} </p>
   </StyledElement>
     ;
-}
+};
 
 const StyledElement = styled.div`
   display: flex;

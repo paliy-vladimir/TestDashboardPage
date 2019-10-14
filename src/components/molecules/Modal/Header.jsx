@@ -7,7 +7,7 @@ import close from '../../../resourses/img/create-invoice-path-8@2x.png'
 const Header = ({ handleCloseModal, header, image }) =>
   <StyledMainTitle>
     <p>{header}</p>
-    <img src={image} onClick={handleCloseModal}></img>
+    <img src={image} alt='close' onClick={handleCloseModal} />
   </StyledMainTitle>
 ;
 
@@ -17,7 +17,8 @@ const StyledMainTitle = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-   p {
+  
+  p {
     font-family: "Quicksand", Helvetica, Arial, serif;
     font-weight: 900;
     font-style: normal;
@@ -27,6 +28,7 @@ const StyledMainTitle = styled.div`
     line-height: 18px;
     margin-left: 20px;
   }
+  
   img {
     width: 10px;
     height: 10px;
@@ -47,4 +49,4 @@ Header.defaultProps = {
   image: close,
 };
 
-export default Header;
+export default memo(Header);

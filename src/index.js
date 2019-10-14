@@ -1,22 +1,23 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router as HistoryProvider } from 'react-router';
 import { createBrowserHistory } from 'history';
 import * as serviceWorker from './serviceWorker';
 
-import GlobalStyles from './resourses/styles/GlobalStyles';
-
 import App from './App';
+
+import GlobalStyles from './resourses/styles/GlobalStyles';
+import 'react-datepicker/dist/react-datepicker.css';
+import 'react-circular-progressbar/dist/styles.css';
+
 
 export const history = createBrowserHistory();
 
 ReactDOM.render(
-  <Fragment>
-    <HistoryProvider history={history}>
-      <GlobalStyles />
-      <App />
-    </HistoryProvider>
-  </Fragment>,
+  <HistoryProvider history={history}>
+    <GlobalStyles/>
+    <App/>
+  </HistoryProvider>,
   document.getElementById('root')
 );
 

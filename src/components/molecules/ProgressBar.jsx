@@ -5,39 +5,32 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 
 import { Label } from './Label';
 
-import 'react-circular-progressbar/dist/styles.css';
-
-const ProgressBar = ({value, text, colorText, colorSuccess, colorNeed }) =>
-  <StyledContainer>
+const ProgressBar = ({value, text, colorText, colorSuccess, colorNeed }) => {
+  const styles = {
+    path: { stroke: colorSuccess, },
+    trail: { stroke: colorNeed },
+    // Customize the text
+    text: {
+      fill: colorText,
+      fontSize: '16px',
+    },
+    // Customize background - only used when the `background` prop is true
+    background: { fill: '#3e98c7' },
+  };
+  return <StyledContainer>
     <CircularProgressbar
       value={value}
       text={`${value}%`}
       strokeWidth={2}
-      styles={{
-        path: {
-          // Path color
-          stroke: colorSuccess,
-        },
-        trail: {
-          stroke: colorNeed,
-        },
-        // Customize the text
-        text: {
-          fill: colorText,
-          fontSize: '16px',
-        },
-        // Customize background - only used when the `background` prop is true
-        background: {
-          fill: '#3e98c7',
-        },
-      }}
+      styles={styles}
     />
     <Label>{text}</Label>
   </StyledContainer>;
+};
 
 const StyledContainer = styled.div`
-  width:100px
-`
+  width:100px;
+`;
 
 ProgressBar.propTypes = {
   value: PropTypes.number,
@@ -45,7 +38,7 @@ ProgressBar.propTypes = {
   colorNeed: PropTypes.string,
   colorSuccess: PropTypes.string,
   colorText: PropTypes.string,
-}
+};
 
 ProgressBar.defaultProps = {
   value: 40,
@@ -53,6 +46,6 @@ ProgressBar.defaultProps = {
   colorNeed: '#f9f9f9',
   colorSuccess: 'rgb(76, 175, 80)',
   colorText: 'rgb(76, 175, 80)'
-}
+};
 
 export default memo(ProgressBar);

@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 import Checkbox from '../../molecules/Checkbox';
 
 const CheckboxBar = () => <StyledCheckboxBar>
   <p>Send via</p>
-  <Checkbox label={'Sync'} className='checkbox'/>
-  <Checkbox label={'Email'} className='checkbox'/>
+  <Checkbox label='Sync' className='checkbox'/>
+  <Checkbox label='Email' className='checkbox'/>
 </StyledCheckboxBar>;
 
 const StyledCheckboxBar = styled.div`
@@ -32,6 +32,6 @@ const StyledCheckboxBar = styled.div`
     color: rgba(112, 112, 112, 1.0);
     line-height: 15px;
   }
-`
+`;
 
-export default CheckboxBar;
+export default memo(CheckboxBar);

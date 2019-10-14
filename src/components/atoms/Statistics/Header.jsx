@@ -20,6 +20,7 @@ const Header = ({ main, desc, className }) => (
     </div>
   </StyledHeader>
 );
+
 const StyledHeader = styled.div`
   background: linear-gradient(180deg, #563d5d, #2b1c30);
   display: flex;

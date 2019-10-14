@@ -5,15 +5,11 @@ import Statistics from '../atoms/Statistics';
 import TopBar from '../atoms/TopBar/';
 import NewInvoiceModal from '../atoms/NewInvoiceModal';
 import { Grid } from '../molecules/Grid';
-import 'react-datepicker/dist/react-datepicker.css';
 
 class CreateInvoice extends PureComponent {
   state = {
     showModal: false,
-    startDate: new Date()
   };
-
-  handleChange = date => this.setState({ startDate: date });
 
   handleOpenModal = () => this.setState({ showModal: true });
 

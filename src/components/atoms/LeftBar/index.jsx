@@ -16,14 +16,9 @@ class LeftBar extends PureComponent {
     selectedSubPages: 0,
   };
 
-  onChangeSelectedPage = (selectedPage) => {
-    this.setState({selectedPage})
-  };
+  onChangeSelectedPage = (selectedPage) => this.setState({selectedPage});
 
-  onChangeSelectedSubPage = (selectedSubPages) => {
-    this.setState({selectedSubPages})
-  };
-
+  onChangeSelectedSubPage = (selectedSubPages) => this.setState({selectedSubPages});
 
   render() {
     const { pages, subPages, openModal } = this.props;

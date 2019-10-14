@@ -30,7 +30,7 @@ const NewInvoiceModal = ({ showModal, handleCloseModal }) => (
 
 const StyledGrid = styled(Grid)`
   justify-content: space-between;
-`
+`;
 
 NewInvoiceModal.propTypes = {
   showModal: PropTypes.bool,

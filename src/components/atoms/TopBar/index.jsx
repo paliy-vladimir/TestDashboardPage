@@ -44,6 +44,7 @@ const StyledContainer = styled.div`
   padding: 0 25px;
   display: flex;
   border-bottom: 2px solid rgba(243, 243, 243, 1);
+  
   .logo {
     display: flex;
     align-items: center;
@@ -53,6 +54,7 @@ const StyledContainer = styled.div`
       height: 20px;
     }
   }
+  
   .toolbar-sections {
     display: flex;
     justify-content: space-between;
@@ -77,6 +79,7 @@ const StyledContainer = styled.div`
       }
     }
   }
+  
   .options {
     width: 30px;
     margin-left: 50px;

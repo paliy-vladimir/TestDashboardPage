@@ -4,26 +4,24 @@ import styled from 'styled-components';
 
 const Element = ({ text, img, isSelected, onChange, id }) => {
   const changeCurrentElement = () => onChange(id);
-
-  return   <StyledElement isSelected={isSelected} onClick={changeCurrentElement}>
+  return <StyledElement isSelected={isSelected} onClick={changeCurrentElement}>
     <div>
-      <img src={img} className="shape"/>
+      <img src={img} alt='icon' className="shape"/>
     </div>
-    <div className='text'>
+    <div className="text">
       {text}
     </div>
-  </StyledElement>
-    ;
-}
+  </StyledElement>;
+};
 
 const StyledElement = styled.div`
   display: flex;
   padding: 0 17px;
   cursor: pointer;
-  background-color: ${props => props.isSelected ?  'rgba(238, 238, 238, 1.0)' : 'unset'};
+  background-color: ${props => props.isSelected ? 'rgba(238, 238, 238, 1.0)' : 'unset'};
   .text {
     font-family: "Quicksand", Helvetica, Arial, serif;
-    font-weight: ${props => props.isSelected ? 700 : 400 };
+    font-weight: ${props => props.isSelected ? 700 : 400};
     font-style: normal;
     font-size: 14px;
     color: ${props => props.isSelected ? 'rgba(83, 58, 89, 1.0)' : 'rgba(48, 48, 48, 1.0)'};
@@ -37,8 +35,7 @@ const StyledElement = styled.div`
     width: 13px;
     margin-right: 13px;
   }
- 
-`
+`;
 
 Element.propTypes = {
   text: PropTypes.string,

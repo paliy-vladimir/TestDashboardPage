@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import Select, { components } from 'react-select';
 
 const colourStyles = {
-  control: styles => ({ ...styles, backgroundColor: 'white' }),
   option: (styles, { data, isDisabled, isFocused, isSelected }) => {
     const color = chroma(data.color);
     return {
@@ -54,6 +53,17 @@ const colourStyles = {
   }),
 };
 
+const getStylesForSelect = (withPadding, withBorder) => {
+  const paddingLeft =  withPadding ? 20 : 0;
+  const border = !withBorder && 'none';
+  colourStyles.control = styles => ({
+    ...styles,
+    backgroundColor: 'white',
+    paddingLeft,
+    border,
+  });
+};
+
 const colourOptions = [
   { value: 'Evgeny', label: 'Evgeny', color: '#00B8D9', isFixed: true },
   { value: 'Big Boss', label: 'Big Boss', color: '#0052CC', isDisabled: true },
@@ -65,8 +75,7 @@ const colourOptions = [
 const DropdownIndicator = (props) => <components.DropdownIndicator {...props}> + </components.DropdownIndicator>;
 
 const MultiSelect = (props) => {
-  const paddingLeft =  props.withPadding ? 20 : 0;
-  colourStyles.control = styles => ({ ...styles, backgroundColor: 'white', paddingLeft });
+  getStylesForSelect(props.withPadding, props.withBorder);
   return <StyledSelect
     isMulti
     {...props}
@@ -84,6 +93,7 @@ MultiSelect.propTypes = {
   options: PropTypes.array,
   styles: PropTypes.object,
   withPadding: PropTypes.bool,
+  withBorder: PropTypes.bool,
 };
 
 MultiSelect.defaultProps = {
@@ -91,7 +101,8 @@ MultiSelect.defaultProps = {
   defaultValue: [colourOptions[0]],
   options: colourOptions,
   styles: colourStyles,
-  withPadding: false,
+  withPadding: true,
+  withBorder: true,
 }
 
 export default memo(MultiSelect)

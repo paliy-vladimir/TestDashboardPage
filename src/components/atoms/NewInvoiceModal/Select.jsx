@@ -5,9 +5,9 @@ import styled from 'styled-components';
 import people from '../../../resourses/img/create-invoice-fill-8@2x.png';
 
 const InvoiceSelect = () =>  <StyledGrid>
-  <img src={people} />
+  <img src={people} alt='people' />
   <div className='select'>
-    <Select withPadding={true} />
+    <Select withBorder={false} />
   </div>
 </StyledGrid>;
 
@@ -27,8 +27,6 @@ const StyledGrid = styled.div`
     left: 12px;
     top: 13px;
   }
-`
-
-
+`;
 
 export default memo(InvoiceSelect)
